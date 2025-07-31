@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -68,28 +71,27 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
-function galleryTamplate(images) {
+function galleryTamplate(image) {
   return `<li class="gallery-item">
-	<a class="gallery-link" href="${images.original}">
+	<a class="gallery-link" href="${image.original}">
 		<img 
 		  class="gallery-image" 
-		  src="${images.original}" 
-		  alt="${images.description}" 
+		  src="${image.preview}" 
+		  alt="${image.description}" 
 		/>
 	</a>
 </li>
 `;
 }
 
-function galleriesTemplate(images) {
-  return images.map(galleryTamplate).join('');
+function galleriesTemplate(image) {
+  return image.map(galleryTamplate).join('');
 }
 
 const markup = galleriesTemplate(images);
 refs.gallery.innerHTML = markup;
 
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+
 
 let gallery = new SimpleLightbox('.gallery li a', {
   captions: true,

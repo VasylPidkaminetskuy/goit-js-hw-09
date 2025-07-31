@@ -50,12 +50,14 @@ function saveToLS(key, value) {
   localStorage.setItem(key, jsonData);
 }
 
-function getFromLS(key, defaultValue) {
+function getFromLS(key, defaultValue = { email: '', message: '' }) {
   const jsonData = localStorage.getItem(key);
+  if (!jsonData) return defaultValue;
+
   try {
     const data = JSON.parse(jsonData);
-    return data;
+    return (data && typeof data === 'object') ? data : defaultValue;
   } catch {
-    return defaultValue || jsonData;
+    return defaultValue;
   }
 }

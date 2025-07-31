@@ -2,7 +2,7 @@
 	<a class="gallery-link" href="${t.original}">
 		<img 
 		  class="gallery-image" 
-		  src="${t.original}" 
+		  src="${t.preview}" 
 		  alt="${t.description}" 
 		/>
 	</a>
